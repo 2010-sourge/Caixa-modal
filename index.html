@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modal Pop-up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <!-- Botão que abre o modal -->
+  <button id="openModalBtn" class="btn-open">Click Me</button>
+ 
+  <!-- Overlay + Modal -->
+  <div id="overlay" class="overlay hidden">
+    <div class="modal">
+      <div class="modal-icon">
+        <span>!</span>
+      </div>
+      <h2 class="modal-title">Confirm</h2>
+      <p class="modal-text">Are you sure want to permanently delete this Photo?</p>
+      <div class="modal-buttons">
+        <button id="confirmBtn" class="btn-confirm">Yes, Delete!</button>
+        <button id="cancelBtn" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+ 
+  <script>
+    const openBtn = document.getElementById('openModalBtn');
+    const overlay = document.getElementById('overlay');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+ 
+    openBtn.addEventListener('click', () => {
+      overlay.classList.remove('hidden');
+    });
+ 
+    cancelBtn.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+    });
+ 
+    confirmBtn.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      alert('Foto deletada!');
+    });
+ 
+    // Fecha ao clicar fora do modal
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.add('hidden');
+      }
+    });
+  </script>
+ 
+</body>
+</html>
+ 
